@@ -1,3 +1,5 @@
+require("../instrument.js");
+const Sentry = require("@sentry/node");
 const express = require("express");
 const app = express();
 
@@ -62,6 +64,14 @@ app.delete("/tasks/:id", (req, res) => {
   tareas.splice(index, 1);
   res.status(200).json({ mensaje: "Tarea eliminada correctamente" });
 });
+
+// Ruta de prueba para Sentry
+app.get("/debug-sentry", (req, res) => {
+  throw new Error("Error de prueba para Sentry - Lista de Tareas");
+});
+
+// Sentry manejo de errores (debe ir antes de module.exports)
+Sentry.setupExpressErrorHandler(app);
 
 // Exportamos la app para poder usarla en las pruebas
 module.exports = { app, tareas, get contadorId() { return contadorId; }, resetData() { tareas = []; contadorId = 1; } };
