@@ -1,12 +1,12 @@
 const { app } = require("./src/app");
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`🚀 Servidor corriendo en el puerto ${PORT}`);
   console.log(`📋 Endpoints disponibles:`);
-  console.log(`   GET    http://localhost:${PORT}/tasks`);
-  console.log(`   POST   http://localhost:${PORT}/tasks`);
-  console.log(`   PUT    http://localhost:${PORT}/tasks/:id`);
-  console.log(`   DELETE http://localhost:${PORT}/tasks/:id`);
+  console.log(`   GET    /tasks`);
+  console.log(`   POST   /tasks`);
+  console.log(`   PUT    /tasks/:id`);
+  console.log(`   DELETE /tasks/:id`);
 });
